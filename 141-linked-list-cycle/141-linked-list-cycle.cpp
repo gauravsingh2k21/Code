@@ -18,8 +18,11 @@ public:
          s.insert(head);
          head=head->next;
      }
-        return false;*/
+        return false;
         
+ 
+############# If hare will be less than or equal than trtoise then there will be a loop ###############
+ 
         
         ListNode *tortoise = head;
         if(!tortoise)
@@ -40,6 +43,25 @@ public:
             hare = hare->next->next;
             
             if(hare<=tortoise)
+                return true;
+        }
+        return false; */
+        
+        
+// Using the same slow fast pointer in other way         
+        
+        if(head==nullptr)
+            return false;
+        
+        ListNode *slow = head;
+        ListNode *fast = head;
+        
+        while(fast!=nullptr && fast->next!=nullptr)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+            
+            if(slow == fast)
                 return true;
         }
         return false;
