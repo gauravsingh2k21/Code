@@ -13,5 +13,21 @@ public:
                i++;
         }
         return nums[i];
+        
+        
+        int slow =0;
+        int fast =1; 
+        
+        if(nums[slow]==nums[fast])
+            return nums[fast];
+        
+        while(nums[slow]!= nums[fast])
+        {
+            fast+=2;
+            slow++;
+        }
+        
+        return nums[fast];
+        
     }
 };
