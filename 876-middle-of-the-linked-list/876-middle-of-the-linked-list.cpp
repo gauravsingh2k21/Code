@@ -12,7 +12,7 @@ class Solution {
 public:
     ListNode* middleNode(ListNode* head)
     {
-      ListNode *p1 = head;
+     /* ListNode *p1 = head;
       ListNode *p2 = head;
       int count =1 ;  
       
@@ -30,8 +30,18 @@ public:
           --val;
       }
         return p1;
-      
+        */
         
+        
+      ListNode *p1 = head;
+      ListNode *p2 = head; 
+      
+      while(p2 && p2->next)
+      {
+          p1= p1->next;
+          p2= p2->next->next;
+      }
+        return p1;
         
         
     }
