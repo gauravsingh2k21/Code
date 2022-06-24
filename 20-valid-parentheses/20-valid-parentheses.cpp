@@ -3,7 +3,7 @@ public:
     bool isValid(string s) 
     {
        stack<char> st;
-        for(char &i:s)
+        for(auto i:s)
         {
           switch(i)
           {
