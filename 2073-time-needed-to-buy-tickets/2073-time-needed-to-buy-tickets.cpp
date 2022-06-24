@@ -17,7 +17,7 @@ public:
             --tickets[idx];
             if(tickets[idx]>0) q.push(idx);
         }
-        return count;*/
+        return count;
         
         
         
@@ -48,8 +48,20 @@ public:
             
         }
         count++;
-        return count;
+        return count;*/
+        
+        int count =0;
+        int i=0;
+        while(i<tickets.size())
+        {
+            if(i>k)
+                count+=min(tickets[k]-1,tickets[i]);
             
+            else 
+                count+=min(tickets[i],tickets[k]);
+            i++;
+        }
+          return count;  
         
     }
 };
