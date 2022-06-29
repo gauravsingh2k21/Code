@@ -24,7 +24,10 @@ public:
 };*/
 
 
-class MinStack {
+
+
+
+/*class MinStack {
     vector<int> stk;
      int minval = INT_MAX;
 public:
@@ -62,6 +65,46 @@ public:
         return minval;
     }
 };
+*/
+
+
+
+class MinStack {
+    vector<int> stk;
+    vector<int> minelm;
+public:
+    MinStack() {
+       
+    }
+    
+    void push(int val) 
+    {
+       if(minelm.empty()||minelm.back()>val)
+           minelm.push_back(val);
+       else 
+           minelm.push_back(minelm.back());
+       stk.push_back(val); 
+    }
+    
+    void pop() 
+    {
+        stk.pop_back();
+        minelm.pop_back();
+    }
+    
+    int top() {
+        int top = stk.back();
+        return top;
+    }
+    
+    int getMin() {
+        int top = minelm.back();
+        return top;
+    }
+};
+
+
+
 
 
 /**
