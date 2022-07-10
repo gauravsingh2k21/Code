@@ -22,20 +22,23 @@ class Solution {
 public:
     vector<int> preorder(Node* root) 
     {
-      vector<int> ans;
-      f(root,ans);
-      return ans;  
+      vector<int> res;
+      stack<Node *> s;
+      if (root == nullptr)
+         return res;
+     
         
-    }
-    
-    void f(Node *root,  vector<int> &ans )
-    {
-        if(root == nullptr)
-            return ;
-        ans.push_back(root->val);
-        
-        for(auto it:root->children)
-          f(it,ans);
-            
+      s.push(root);
+      
+      while(!s.empty())
+      {
+          Node *curr = s.top();
+          
+          s.pop();
+          res.push_back(curr->val);
+          for(int i= curr->children.size()-1;i>=0;i--)
+              s.push(curr->children[i]);
+      }
+        return res;
     }
 };
