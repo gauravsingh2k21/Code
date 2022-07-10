@@ -11,20 +11,18 @@
  */
 class Solution {
 public:
-    int minDepth(TreeNode* root)
+    int minDepth(TreeNode* root) 
     {
-        if(root==nullptr)
-            return 0;
-        
-        if(root->left==nullptr)  return  1+minDepth(root->right);
-        if(root->right==nullptr)  return 1+minDepth(root->left);
-        
-        
-            
-          int l = minDepth(root->left);
-          int r = minDepth(root->right);
-           
-        
-           return 1+min(l,r);
+      if(root == nullptr)
+          return 0;
+      if(root->left == nullptr && root->right == nullptr)
+          return 1 ;
+      
+      int left = 100001, right = 100001;
+      
+      if(root->left)left = min(left, 1+minDepth(root->left));
+      if(root->right)right = min(right,1+minDepth(root->right));
+      
+      return min(left,right);  
     }
 };
