@@ -1,27 +1,26 @@
 class Solution {
 public:
-    vector<vector<int>> subsets(vector<int>& nums) {
-        return helper(nums,0);
+    vector<vector<int>> subsets(vector<int>& nums)
+    {
+         vector<vector<int>> ans;
+         vector<int> subset;
+        
+         helper(nums,ans,0,subset);
+         return ans;
     }
     
-    vector<vector<int>> helper(vector<int>& nums,int i)
-     {
-         if(i>=nums.size())
-             return {{}};
-         
-         vector<vector<int>> PartialAnswer = helper(nums,i+1);
-         vector<vector<int>> ans ;
-         
-         for(vector<int> x:PartialAnswer)
-             ans.push_back(x);
-         
-         for(vector<int> x:PartialAnswer)
-         {    
-             x.push_back(nums[i]);
-             ans.push_back(x);
-         }
-         
-         return ans;
-         
-     }
+    void helper(vector<int>&nums,vector<vector<int>> &ans,int i,vector<int>subset)
+    {
+        if(i==nums.size())
+        {   
+            ans.push_back(subset);
+            return;
+        }   
+            
+        subset.push_back(nums[i]);
+        helper(nums,ans,i+1,subset);
+        
+        subset.pop_back();
+        helper(nums,ans,i+1,subset);
+    }
 };
