@@ -18,8 +18,7 @@ public:
             return;
         } 
         
-        else
-        {    
+          
         temp.push_back(nums[i]);
         helper(ans,nums,i+1,temp);
         
@@ -28,7 +27,7 @@ public:
         while(i+1<nums.size()&& nums[i]==nums[i+1])
            i++;
         helper(ans,nums,i+1,temp);
-        }    
+          
         
     }
 };
