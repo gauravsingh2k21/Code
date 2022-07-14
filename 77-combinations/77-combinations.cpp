@@ -10,10 +10,13 @@ public:
     
     void helper(vector<vector<int>> &ans, vector<int> &subset, int n, int k,int i)
     {
+         if(k==0)
+         {    
+              ans.push_back(subset);
+              return;
+         }   
         if(i>n)
         {
-            if(k==0)
-              ans.push_back(subset);
             return;
         }
         subset.push_back(i);
