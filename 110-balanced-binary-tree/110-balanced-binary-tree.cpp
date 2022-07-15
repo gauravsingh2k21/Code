@@ -13,21 +13,31 @@ class Solution {
 public:
     bool isBalanced(TreeNode* root) 
     {
-        if(root==nullptr)
-             return true;
+      if(root ==nullptr )
+          return true;
         
-        int lheight = height(root->left);
-        int rheight= height(root->right);
+     return height(root)!=-1;
+            
         
-        if (abs(lheight-rheight)>1) return false;
-        else return (isBalanced(root->left)&&isBalanced(root->right));
     }
-    
     int height(TreeNode *root)
     {
         if(root==nullptr)
-            return 0 ;
+            return 0;
         
-        return 1+max(height(root->left),height(root->right));
+        int lh = height(root->left);
+        if(lh==-1) return -1;
+        
+        int rh = height(root->right);
+        if(rh==-1) return -1;
+        
+        int bf = abs(lh-rh) ;
+        
+        if(bf>1)
+            return -1;
+        
+        return 1+max(lh,rh);
+        
+        
     }
 };
