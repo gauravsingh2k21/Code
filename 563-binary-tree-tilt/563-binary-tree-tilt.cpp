@@ -11,21 +11,21 @@
  */
 class Solution {
 public:
-    int tilt=0;
+   
     int findTilt(TreeNode* root)
     {
-        
-        helper(root);
+         int tilt=0;
+        helper(root,tilt);
         return tilt;
     }
     
-    int helper(TreeNode* root)
+    int helper(TreeNode* root, int &tilt)
     {
         if(root==nullptr)
             return 0;
         
-        int leftsum = helper(root->left);
-        int rightsum = helper(root->right);
+        int leftsum = helper(root->left,tilt);
+        int rightsum = helper(root->right,tilt);
         
         tilt+= abs(leftsum-rightsum);
         
