@@ -14,18 +14,27 @@ public:
     TreeNode* searchBST(TreeNode* root, int val) 
     {
         return helper(root,val);
-        
     }
     
-    TreeNode * helper(TreeNode *root,int val)
+    TreeNode* helper(TreeNode *root, int val)
     {
         if(root==nullptr)
             return nullptr;
-        
-        if(root->val ==val)
+        if(root->val == val)
             return root;
-        auto root1 = root->val > val ? helper(root->left,val) : helper(root->right,val);
         
-        return root1;
+        auto lp = helper(root->left,val);
+        
+        if(lp!= nullptr)
+            return lp;
+        
+        auto rp = helper(root->right,val);
+        
+        if(rp!=nullptr)
+            return rp;
+        
+        return nullptr;
+        
+        
     }
 };
