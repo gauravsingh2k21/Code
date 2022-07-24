@@ -13,10 +13,8 @@ class Solution {
 public:
     bool checkTree(TreeNode* root) 
     {
-       TreeNode* left = root->left;
-       TreeNode * right = root->right;
-        
-       if(root->val == left->val+right->val)
+       
+       if(root->val == root->left->val+root->right->val)
            return true;
        return false; 
     }
