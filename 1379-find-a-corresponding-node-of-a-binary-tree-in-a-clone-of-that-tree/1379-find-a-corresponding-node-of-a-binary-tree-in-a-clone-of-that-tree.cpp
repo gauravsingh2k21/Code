@@ -12,24 +12,22 @@ class Solution {
 public:
     TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target)
     {
-        TreeNode *ans=nullptr ;
-        helper(original,cloned,target,ans);
-        return ans;
-        
+        return dfs(original,cloned,target);
     }
     
-    void helper(TreeNode* original, TreeNode* cloned, TreeNode* target,TreeNode *&ans)
+    TreeNode * dfs(TreeNode* original, TreeNode* cloned, TreeNode* target)
     {
-        if(original == nullptr)
-            return ;
+        if(!original)
+            return nullptr;
         
-        if(original == target)
-            ans = cloned;
+        if(original==target)
+            return cloned;
         
-        helper(original->left, cloned->left,target,ans);
-        helper(original->right,cloned->right,target,ans);
+        if (auto left =  dfs(original->left, cloned->left,target))
+            return left;
+        return dfs(original->right,cloned->right,target);
         
-        return;
         
+
     }
 };
