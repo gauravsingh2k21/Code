@@ -2,31 +2,12 @@ class Solution {
 public:
     void reverseString(vector<char>& s) 
     {
-      //TailRecursion(s,0,s.size()-1);
-      HeadRecursion(s,0,s.size()-1);  
-          
+      int i =0, j=s.size()-1;  
+      while(i<=j)  
+      {
+          swap(s[i],s[j]);
+          i++;
+          j--;
+      }
     }
-private:
-     void TailRecursion(vector<char>& s,int i, int j )
-     {
-         if(j-i+1<=1)
-             return;
-         swap(s[i],s[j]);
-         
-         TailRecursion(s,i+1,j-1);
-     }
-    
-      
-      void HeadRecursion(vector<char>& s,int i, int j )
-     {
-         if(j-i+1<=1)
-             return;
-          
-         HeadRecursion(s,i+1,j-1);
-          
-          
-         swap(s[i],s[j]);
-         
-        
-     }
 };
