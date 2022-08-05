@@ -2,23 +2,19 @@ class Solution {
 public:
     bool isPalindrome(int x) 
     {
+        int m=1;
+        long long int num=0;
+        int tem =x;
       if(x<0)
           return false;
-      vector<int>  nums;
         
       while(x>0)
       {
           int i = x%10;
+          num=num*10+i;
           x = x/10;
-          nums.push_back(i);
       }
-      reverse(nums.begin(),nums.end());
-        
-      for(int i=0,j=nums.size()-1;i<=j;i++,j--)
-      {
-          if(nums[i]!=nums[j])
-              return false;
-      }
-        return true;
+     
+        return (num==tem);
     }
 };
