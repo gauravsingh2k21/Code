@@ -10,39 +10,24 @@
  */
 class Solution {
 public:
-    ListNode* middleNode(ListNode* head)
+    ListNode* middleNode(ListNode* head) 
     {
-     /* ListNode *p1 = head;
-      ListNode *p2 = head;
-      int count =1 ;  
-      
-      while(p2->next!=nullptr)
+      int count =0;
+      ListNode *node = head ;
+      while(node!=nullptr)
       {
-          p2=p2->next;
+          node =node->next ;
           count++;
       }
+        int loop = count/2;
+        ListNode *ans= head;
+        while(loop)
+        {
+            ans = ans->next;
+            --loop;
+        }
         
-       int val = count/2 ;
-        
-      while(val>0)
-      {
-          p1=p1->next;
-          --val;
-      }
-        return p1;
-        */
-        
-        
-      ListNode *p1 = head;
-      ListNode *p2 = head; 
-      
-      while(p2 && p2->next)
-      {
-          p1= p1->next;
-          p2= p2->next->next;
-      }
-        return p1;
-        
-        
+       return ans; 
     }
+    
 };
