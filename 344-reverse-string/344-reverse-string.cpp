@@ -1,16 +1,15 @@
 class Solution {
 public:
-    void reverseString(vector<char>& s) 
+    void reverseString(vector<char>& s)
     {
-        int j= s.size()-1;
-        helper(s,0,j);
+      helper(s,0,s.size()-1);  
     }
     
-    void helper(vector<char>& s, int i,int j )
+    void helper(vector<char>& s,int p1, int p2)
     {
-        if(i>=j)
-            return;
-        helper(s,i+1,j-1);
-        swap(s[i],s[j]);
+        if(p1>p2)
+            return ;
+        swap(s[p1],s[p2]);
+        helper(s,p1+1,p2-1);
     }
 };
