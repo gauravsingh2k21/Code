@@ -9,10 +9,13 @@ public:
        {
           running_sum+=nums[i];
           sum = running_sum%k;
-          if(m.find(sum)==m.end())
-              m[sum]=i;
-          else if(i-m[sum]>1)
-              return true;
+          if(m.find(sum)!=m.end())
+          {
+              if(i-m[sum]>1)
+                  return true;
+          }   
+          else 
+              m[sum]=i;;
        }
         return false;
     }
